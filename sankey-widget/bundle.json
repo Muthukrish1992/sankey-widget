@@ -1,0 +1,22 @@
+{
+    "id": "514f4874-b642-4e74-a5b4-1dd83946409b",
+    "author": "",
+    "widgets": [
+        {
+            "id": "sankey_widget",
+            "name": "sankey_widget",
+            "description": "A sample widget",
+            "icon": "",
+            "tags":[]
+        }
+    ],
+    "sidebarLinks": [
+        
+    ],
+    "uis": [
+       
+    ],
+    "menuItems": [
+        
+    ]
+}

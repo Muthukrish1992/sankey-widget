@@ -1,0 +1,37 @@
+{
+    "id": "32b35856-6e0b-4cc8-8932-d63933984056",
+    "author": "",
+    "widgets": [
+        {
+            "id": "sankey_widget",
+            "name": "sankey_widget",
+            "description": "A sample widget",
+            "icon": "",
+            "tags":[]
+        }
+    ],
+    "sidebarLinks": [
+        {
+            "id": "sankey_widgetLink",
+            "label": "",
+            "description": "",
+            "target": "",
+            "icon": "",
+            "roles":[]
+        }
+    ],
+    "uis": [
+        {
+            "id": "sankey_widgetLink",
+            "label":"",
+            "description": "",
+            "roles": []
+        }
+    ],
+    "menuItems": [
+        {
+            "id": "sankey_widgetLink",
+            "title": "sankey_widget"
+        }
+    ]
+}
