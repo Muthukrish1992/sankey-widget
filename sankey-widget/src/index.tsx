@@ -59,17 +59,41 @@ const Sankey_widgetWidget: React.FunctionComponent<IWidgetProps> = (props) => {
             { source: 'IT & Telecommunications', target: 'Supermarket/Hypermarket', value: 10 },
             { source: 'IT & Telecommunications', target: 'Shoes & Bags', value: 10 },
             { source: 'LifeStyle,Hobbies & Gifts', target: 'Shoes & Bags', value: 10 },
+            
         ],
     };
+// Get unique titles
+const uniqueTitles = [...new Set(data.nodes.map(node => node.title))];
 
+// Calculate the starting position of each group of nodes
+const startingPositions: { [key: string]: string } = {};
+data.nodes.forEach(node => {
+    if (!(node.title in startingPositions) || node.id.localeCompare(startingPositions[node.title]) < 0) {
+        startingPositions[node.title] = node.id;
+    }
+});
+return (
+    <WidgetWrapper>
+        <TitleBar title='Sankey_widget'>
+            {/* No FilterPanel needed */}
+        </TitleBar>
+        <div style={{ position: 'relative' }}>
+        <div style={{ position: 'relative' }}>
+    {Object.entries(startingPositions).map(([title, startPosition]) => (
+        <div 
+            key={title} 
+            style={{ 
+                position: 'absolute', 
+                left: `calc(${(100 / data.nodes.length) * data.nodes.findIndex(node => node.id === startPosition)}% )`,
+                transform: 'translate(-5%, -10px)'  // Adjust vertical positioning if needed
+            }}
+        >
+            {title}
+        </div>
+    ))}
+</div>
 
-    return (
-        <WidgetWrapper>
-            <TitleBar title='Sankey_widget'>
-                {/* No FilterPanel needed */}
-            </TitleBar>
             <div style={{ position: 'relative', height: '500px', width: '100%' }}>
-
                 <ResponsiveSankey
                     data={data}
                     margin={{ top: 40, right: 160, bottom: 40, left: 50 }}
@@ -89,8 +113,10 @@ const Sankey_widgetWidget: React.FunctionComponent<IWidgetProps> = (props) => {
                     label={(node: Node) => node.id}
                 />
             </div>
-        </WidgetWrapper>
-    );
+        </div>
+    </WidgetWrapper>
+);
+
 };
 
 registerWidget({
